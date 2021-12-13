@@ -1,0 +1,39 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { IntlProvider } from "react-intl";
+import { Button } from "./Button";
+
+<Meta title="Button MDX" component={Button} />
+
+export const Template = (args) => <Button {...args} />;
+
+<Canvas withSource="open">
+  <Story name="Works" args={{ primary: true, label: "Code example works" }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas withSource="open">
+  <Story
+    name="No Display Name"
+    args={{ primary: true, label: "No Display Name" }}
+    decorators={[
+      (Story) => (
+        <IntlProvider locale="en">
+          <Story />
+        </IntlProvider>
+      ),
+    ]}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas withSource="open">
+  <Story
+    name="Story function"
+    args={{ primary: true, label: "MDXCreateElement" }}
+    decorators={[(Story) => <IntlProvider locale="en">{Story()}</IntlProvider>]}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

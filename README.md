@@ -1,4 +1,4 @@
-# Storybbo display name issues
+# Storybook display name issues
 
 ```bash
 npm install
